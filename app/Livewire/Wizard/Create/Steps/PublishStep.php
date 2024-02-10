@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Wizard\Create\Steps;
 
-use Livewire\Component;
+use Spatie\LivewireWizard\Components\StepComponent;
 
-class PublishStep extends Component
+class PublishStep extends StepComponent
 {
     public function render()
     {
