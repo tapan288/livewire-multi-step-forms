@@ -7,12 +7,13 @@ use Spatie\LivewireWizard\Components\StepComponent;
 
 class PublishStep extends StepComponent
 {
-    public function stateToStore(): array
+    public function stateToStore()
     {
-        return [
-            'title' => $this->state()->forStep('wizard.create.steps.title-step')['title'],
-            'description' => $this->state()->forStep('wizard.create.steps.description-step')['description'],
-        ];
+        return collect($this->state()->all())
+            ->mapWithKeys(function ($value) {
+                return $value;
+            })->only(['title', 'description'])
+            ->toArray();
     }
 
     public function submit()
