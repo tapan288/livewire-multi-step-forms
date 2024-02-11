@@ -5,8 +5,13 @@
             <li>Description: {{ $description }}</li>
         </ul>
 
-        <x-primary-button>
-            {{ __('Publish') }}
-        </x-primary-button>
+        <div class="flex justify-between">
+            <x-secondary-button type="button" wire:click="previousStep">
+                {{ __('Previous step') }}
+            </x-secondary-button>
+            <x-primary-button>
+                {{ __('Publish') }}
+            </x-primary-button>
+        </div>
     </form>
 </div>

@@ -7,8 +7,13 @@
             <x-input-error :messages="$errors->get('description')" class="mt-2" />
         </div>
 
-        <x-primary-button>
-            {{ __('Next step') }}
-        </x-primary-button>
+        <div class="flex justify-between">
+            <x-secondary-button type="button" wire:click="previousStep">
+                {{ __('Previous step') }}
+            </x-secondary-button>
+            <x-primary-button>
+                {{ __('Next step') }}
+            </x-primary-button>
+        </div>
     </form>
 </div>
