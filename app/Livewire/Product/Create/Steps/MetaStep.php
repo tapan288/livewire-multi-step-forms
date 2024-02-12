@@ -39,8 +39,6 @@ class MetaStep extends StepComponent
 
             $this->productId = $product->id;
         }
-        ;
-
 
         $this->nextStep();
     }
