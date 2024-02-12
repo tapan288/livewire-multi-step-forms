@@ -13,4 +13,9 @@ class ProductState extends State
             $this->forStep('product.create.steps.meta-step')['productId']
         );
     }
+
+    public function hasProduct(): bool
+    {
+        return filled($this->forStep('product.create.steps.meta-step')['productId']);
+    }
 }

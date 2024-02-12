@@ -26,12 +26,21 @@ class MetaStep extends StepComponent
     {
         $this->validate();
 
-        $product = auth()->user()->products()->create([
-            'title' => $this->title,
-            'description' => $this->description,
-        ]);
+        if ($this->state()->hasProduct()) {
+            $this->state()->product()->update([
+                'title' => $this->title,
+                'description' => $this->description,
+            ]);
+        } else {
+            $product = auth()->user()->products()->create([
+                'title' => $this->title,
+                'description' => $this->description,
+            ]);
 
-        $this->productId = $product->id;
+            $this->productId = $product->id;
+        }
+        ;
+
 
         $this->nextStep();
     }
