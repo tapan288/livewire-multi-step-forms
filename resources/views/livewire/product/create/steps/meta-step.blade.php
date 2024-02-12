@@ -18,9 +18,11 @@
                     <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
 
-                <x-primary-button>
-                    {{ __('Next step') }}
-                </x-primary-button>
+                <x-wizard.buttons>
+                    <x-primary-button>
+                        {{ __('Next step') }}
+                    </x-primary-button>
+                </x-wizard.buttons>
             </form>
         </div>
     </div>

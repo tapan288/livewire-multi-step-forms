@@ -17,9 +17,16 @@
                         <img src="{{ $image->temporaryUrl() }}" class="h-44 w-44" />
                     @endif
                 </div>
-                <x-primary-button>
-                    {{ __('Next step') }}
-                </x-primary-button>
+                <x-wizard.buttons>
+                    <x-slot:back>
+                        <x-secondary-button wire:click="previousStep">
+                            {{ __('Previous Step') }}
+                        </x-secondary-button>
+                    </x-slot:back>
+                    <x-primary-button>
+                        {{ __('Next step') }}
+                    </x-primary-button>
+                </x-wizard.buttons>
             </form>
         </div>
     </div>

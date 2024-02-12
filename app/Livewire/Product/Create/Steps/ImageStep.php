@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Product\Create\Steps;
 
-use Livewire\Attributes\Validate;
 use Livewire\WithFileUploads;
+use Livewire\Attributes\Validate;
 use Spatie\LivewireWizard\Components\StepComponent;
 
 class ImageStep extends StepComponent
@@ -23,7 +23,9 @@ class ImageStep extends StepComponent
     public function submit()
     {
         $this->state()->product()->update([
-            'image_path' => $this->image->storePubliclyAs('images', str()->uuid(), 'public'),
+            'image_path' => $this
+                ->image
+                ->storePubliclyAs('images', str()->uuid(), 'public'),
         ]);
 
         $this->nextStep();
