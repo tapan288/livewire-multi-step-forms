@@ -13,8 +13,8 @@
                         <input type="file" id="image" class="sr-only" wire:model="image">
                     </div>
 
-                    @if ($image)
-                        <img src="{{ $image->temporaryUrl() }}" class="h-44 w-44" />
+                    @if ($this->imagePreview)
+                        <img src="{{ $this->imagePreview }}" class="h-44 w-44" />
                     @endif
                 </div>
                 <x-wizard.buttons>
