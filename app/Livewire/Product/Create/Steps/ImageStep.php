@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Product\Create\Steps;
 
+use Illuminate\Support\Arr;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Validate;
@@ -30,11 +31,18 @@ class ImageStep extends StepComponent
     #[Computed]
     public function imagePreview()
     {
-        if ($this->product->image_path) {
-            return $this->product->image_path;
+        if ($this->image) {
+            return $this->image?->temporaryUrl();
         }
 
-        return $this->image?->temporaryUrl();
+        return $this->product->image_path;
+    }
+
+    public function updatedImage()
+    {
+        if (is_array($this->image)) {
+            $this->image = head(Arr::flatten($this->image));
+        }
     }
 
     public function submit()
