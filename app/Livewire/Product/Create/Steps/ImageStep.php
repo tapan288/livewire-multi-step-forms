@@ -22,10 +22,16 @@ class ImageStep extends StepComponent
     }
 
     #[Computed]
+    public function product()
+    {
+        return $this->state()->product();
+    }
+
+    #[Computed]
     public function imagePreview()
     {
-        if ($this->state()->product()->image_path) {
-            return $this->state()->product()->image_path;
+        if ($this->product->image_path) {
+            return $this->product->image_path;
         }
 
         return $this->image?->temporaryUrl();
@@ -33,7 +39,7 @@ class ImageStep extends StepComponent
 
     public function submit()
     {
-        if ($this->state()->product()->image_path && !$this->image) {
+        if ($this->product->image_path && !$this->image) {
             $this->nextStep();
 
             return;
@@ -41,7 +47,7 @@ class ImageStep extends StepComponent
 
         $this->validate();
 
-        $this->state()->product()->update([
+        $this->product->update([
             'image_path' => $this
                 ->image
                 ->storePubliclyAs('images', str()->uuid(), 'public'),
